@@ -2,9 +2,9 @@
 
 Minimal CLI and webhook server to keep product stock in sync between Erply and Voog.
 
-- One-way: Erply → Voog by SKU
-- Two-way POC: Voog change → set Erply absolute stock (registration/write-off)
-- Webhook server stub for order events
+- Erply → Voog: mirror Erply stock by SKU to Voog
+- Voog → Erply: set Erply absolute stock to match Voog (registration/write-off)
+- Webhook server stub for future order events
 
 Proven in a live test:
 - Set Erply stock to 10 → mirrored to Voog (bulk update) OK
@@ -39,7 +39,7 @@ Optional:
 python erply_voog_sync.py sync --sku ABC123 -v
 ```
 
-- Set absolute stock in Erply to match a value (registration/write-off):
+- Voog → Erply: set absolute stock in Erply to a value (uses registration/write-off under the hood):
 ```
 python erply_voog_sync.py erply-set-stock --sku ABC123 --stock 8 -v
 ```
